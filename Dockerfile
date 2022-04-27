@@ -6,6 +6,9 @@ RUN mkdir /app && \
   npm install --no-optional
 
 FROM node:17-alpine
+
+LABEL org.opencontainers.image.source https://github.com/floj/bibliogram-docker
+
 RUN apk --no-cache add graphicsmagick tini
 COPY --from=builder /app/bibliogram /app
 RUN mkdir /app/db && chown node:node /app/db
